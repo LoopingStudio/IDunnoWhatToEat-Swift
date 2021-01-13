@@ -16,36 +16,97 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z61-Qg-8Ki">
-                                <rect key="frame" x="132" y="427.5" width="150" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="GET A RECIPE"/>
-                                <connections>
-                                    <action selector="getARecipe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QAE-Jw-MYF"/>
-                                </connections>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N6X-Uz-7xn">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yA1-op-NCI" customClass="Gradient" customModule="IDunnoWhatToEat_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.50470425435249378" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSF-kH-RYp">
+                                <rect key="frame" x="8" y="188" width="398" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDA-ri-Xjh">
-                                <rect key="frame" x="130.5" y="757" width="153" height="41"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="GO TO DETAIL"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="goToDetails:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HzU-2s-eaw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z61-Qg-8Ki">
+                                <rect key="frame" x="109" y="766" width="196" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="GET A RECIPE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="getARecipe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QAE-Jw-MYF"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4N-B3-cZG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="m7C-mu-k7z">
+                                        <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstItem="m7C-mu-k7z" firstAttribute="centerX" secondItem="U4N-B3-cZG" secondAttribute="centerX" id="CQb-rN-Mkg"/>
+                                    <constraint firstItem="m7C-mu-k7z" firstAttribute="centerY" secondItem="U4N-B3-cZG" secondAttribute="centerY" id="o53-rD-9r5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
+                            <constraint firstItem="U4N-B3-cZG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4Qv-fa-v0W"/>
+                            <constraint firstItem="yA1-op-NCI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9z6-EI-Jol"/>
+                            <constraint firstItem="N6X-Uz-7xn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="BKK-22-DLs"/>
+                            <constraint firstItem="U4N-B3-cZG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Id0-a7-aIa"/>
+                            <constraint firstAttribute="bottom" secondItem="N6X-Uz-7xn" secondAttribute="bottom" id="IzL-63-RF9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VDA-ri-Xjh" secondAttribute="trailing" id="JZ0-Cz-YS4"/>
                             <constraint firstItem="z61-Qg-8Ki" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nn7-JM-en7"/>
+                            <constraint firstItem="nSF-kH-RYp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Otu-KX-DAn"/>
+                            <constraint firstItem="VDA-ri-Xjh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="R5h-yX-Afv"/>
+                            <constraint firstItem="VDA-ri-Xjh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T38-yC-5Z4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nSF-kH-RYp" secondAttribute="trailing" constant="8" id="TmT-Mj-cvA"/>
+                            <constraint firstItem="nSF-kH-RYp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="TxJ-0r-Mgy"/>
+                            <constraint firstAttribute="bottom" secondItem="U4N-B3-cZG" secondAttribute="bottom" id="XBV-xO-Zas"/>
                             <constraint firstItem="VDA-ri-Xjh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bzk-Oe-mud"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VDA-ri-Xjh" secondAttribute="bottom" constant="64" id="eqm-eH-vig"/>
-                            <constraint firstItem="z61-Qg-8Ki" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rTz-DB-GEi"/>
+                            <constraint firstItem="N6X-Uz-7xn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dDa-OT-qNj"/>
+                            <constraint firstItem="yA1-op-NCI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dNj-n0-yyg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z61-Qg-8Ki" secondAttribute="bottom" constant="48" id="eVs-gL-C1d"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="VDA-ri-Xjh" secondAttribute="bottom" id="lg6-sj-z5j"/>
+                            <constraint firstItem="N6X-Uz-7xn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qSW-xh-l2R"/>
+                            <constraint firstItem="nSF-kH-RYp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="t9z-8e-1Mu"/>
+                            <constraint firstAttribute="bottom" secondItem="yA1-op-NCI" secondAttribute="bottom" id="v1H-vU-9sc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yA1-op-NCI" secondAttribute="trailing" id="vYO-lU-Kcz"/>
+                            <constraint firstItem="U4N-B3-cZG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xRD-Ol-xik"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1t6-yi-X6M"/>
                     <connections>
                         <outlet property="getARecipeButton" destination="z61-Qg-8Ki" id="PIW-Ui-l84"/>
                         <outlet property="goToDetailButton" destination="VDA-ri-Xjh" id="5lZ-dU-8tE"/>
+                        <outlet property="loader" destination="m7C-mu-k7z" id="FK2-ey-KiH"/>
+                        <outlet property="loadingView" destination="U4N-B3-cZG" id="d3h-x4-5zw"/>
+                        <outlet property="mealImage" destination="N6X-Uz-7xn" id="dgr-aD-Z4d"/>
+                        <outlet property="mealName" destination="nSF-kH-RYp" id="bdj-2j-WSK"/>
                         <segue destination="xg4-Iz-nhb" kind="presentation" identifier="goToDetail" modalPresentationStyle="formSheet" id="1Vd-s8-ewV"/>
                     </connections>
                 </viewController>
@@ -105,6 +166,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

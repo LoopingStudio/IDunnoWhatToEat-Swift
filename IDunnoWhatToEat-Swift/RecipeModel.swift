@@ -13,21 +13,18 @@ class RecipeModel {
     var mealName: String
     var category: String
     var instructions: String
-    var thumbnail: String
+    var thumbnail: UIImage?
     var area: String
     var tags: String
     var ingredients: [String]
     var measures: [String]
     var youtubeLink: String
     
-    var image: UIImage?
-    
     init() {
         self.id = 0
         self.mealName = "Base Meal"
         self.category = "Base Category"
         self.instructions = "Base Instructions"
-        self.thumbnail = ""
         self.area = "Base Area"
         self.tags = "Base Tag"
         self.ingredients = ["Ingredient 1", "Ingredient 2"]
@@ -35,12 +32,11 @@ class RecipeModel {
         self.youtubeLink = "https://www.youtube.com/"
     }
     
-    init(id: Int, mealName: String, category: String, instructions: String, thumbnail: String, area: String, tags: String, ingredients: [String], measures: [String], youtubeLink: String) {
+    init(id: Int, mealName: String, category: String, instructions: String, area: String, tags: String, ingredients: [String], measures: [String], youtubeLink: String) {
         self.id = id
         self.mealName = mealName
         self.category = category
         self.instructions = instructions
-        self.thumbnail = thumbnail
         self.area = area
         self.tags = tags
         self.ingredients = ingredients
@@ -50,6 +46,10 @@ class RecipeModel {
     
     func toString() -> String{
         return "Recipe : \n\(mealName), in category : \n\(category)"
+    }
+    
+    func setThumbnail(image: UIImage?){
+        self.thumbnail = image
     }
 }
 
@@ -90,4 +90,40 @@ extension UIImageView {
          }
       }
    }
+}
+
+@IBDesignable
+public class Gradient: UIView {
+    @IBInspectable var startColor:   UIColor = .black { didSet { updateColors() }}
+    @IBInspectable var endColor:     UIColor = .white { didSet { updateColors() }}
+    @IBInspectable var startLocation: Double =   0.05 { didSet { updateLocations() }}
+    @IBInspectable var endLocation:   Double =   0.95 { didSet { updateLocations() }}
+    @IBInspectable var horizontalMode:  Bool =  false { didSet { updatePoints() }}
+
+    override public class var layerClass: AnyClass { CAGradientLayer.self }
+
+    var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
+
+    func updatePoints() {
+        if horizontalMode {
+            gradientLayer.startPoint = .init(x: 0, y: 0.5)
+            gradientLayer.endPoint   = .init(x: 1, y: 0.5)
+        } else {
+            gradientLayer.startPoint = .init(x: 0.5, y: 0)
+            gradientLayer.endPoint   = .init(x: 0.5, y: 1)
+        }
+    }
+    func updateLocations() {
+        gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
+    }
+    func updateColors() {
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+    }
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updatePoints()
+        updateLocations()
+        updateColors()
+    }
+
 }

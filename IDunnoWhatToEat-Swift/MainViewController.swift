@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var mealName: UILabel!
+    
+    @IBOutlet weak var mealImage: UIImageView!
     @IBOutlet weak var getARecipeButton: UIButton!
     @IBOutlet weak var goToDetailButton: UIButton!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    
+    private var isFetching = false
     
     private var randomRecipe: RecipeModel?
     private var nextRecipe: RecipeModel?
@@ -18,17 +26,38 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Api.shared.fetchRandomRecipe { (firstRecipe) in
+            print("First recipe : \(firstRecipe.mealName)")
+            self.randomRecipe = firstRecipe
+            self.setRecipeView()
+            self.fetchRecipe()
+        }
+    }
+    
+    func setRecipeView(){
+        if let meal = randomRecipe {
+            mealName.text = meal.mealName
+            mealImage.image = meal.thumbnail
+            loadingView.isHidden = true
+        }
     }
     
     func fetchRecipe(){
-        Api.shared.fetchRandomRecipe { (newRecipe) in
-            self.randomRecipe = self.nextRecipe
-            self.nextRecipe = newRecipe
-            
-            print("RECIPES: \n\(self.randomRecipe?.toString())\n\(self.nextRecipe?.toString())")
-            
-            if self.randomRecipe == nil {
-                self.fetchRecipe()
+        if isFetching {
+            print("A Recipe is currently fetching")
+            loadingView.isHidden = false
+        } else {
+            print("FETCH RECIPE")
+            if nextRecipe != nil {
+                self.randomRecipe = self.nextRecipe
+                self.setRecipeView()
+            }
+            isFetching = true
+            Api.shared.fetchRandomRecipe { (newRecipe) in
+                self.nextRecipe = newRecipe
+                self.isFetching = false
+                self.setRecipeView()
+                print("New recipe fetched: \(newRecipe.mealName)")
             }
         }
     }
